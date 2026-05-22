@@ -1,0 +1,19 @@
+namespace: default
+
+httpbin:
+  enabled: true
+  name: httpbin
+  image: docker.io/kennethreitz/httpbin
+  tag: latest
+  replicas: 1
+  serviceAccount: httpbin
+  port: 8000
+
+sleep:
+  enabled: true
+  name: sleep
+  image: curlimages/curl
+  tag: 8.8.0
+  replicas: 1
+  serviceAccount: sleep
+  command: ["sleep","3650d"]

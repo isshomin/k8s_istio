@@ -1,0 +1,34 @@
+{{- if .Values.sleep.enabled }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.sleep.serviceAccount }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/part-of: ambient-test
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.sleep.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.sleep.name }}
+    app.kubernetes.io/part-of: ambient-test
+spec:
+  replicas: {{ .Values.sleep.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.sleep.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.sleep.name }}
+        app.kubernetes.io/part-of: ambient-test
+    spec:
+      serviceAccountName: {{ .Values.sleep.serviceAccount }}
+      containers:
+      - name: sleep
+        image: "{{ .Values.sleep.image }}:{{ .Values.sleep.tag }}"
+        command: {{ toJson .Values.sleep.command }}
+{{- end }}

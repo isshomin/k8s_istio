@@ -1,0 +1,49 @@
+{{- if .Values.httpbin.enabled }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.httpbin.serviceAccount }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/part-of: ambient-test
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.httpbin.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.httpbin.name }}
+    app.kubernetes.io/part-of: ambient-test
+spec:
+  replicas: {{ .Values.httpbin.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.httpbin.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.httpbin.name }}
+        app.kubernetes.io/part-of: ambient-test
+    spec:
+      serviceAccountName: {{ .Values.httpbin.serviceAccount }}
+      containers:
+      - name: httpbin
+        image: "{{ .Values.httpbin.image }}:{{ .Values.httpbin.tag }}"
+        ports:
+        - containerPort: {{ .Values.httpbin.port }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.httpbin.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/part-of: ambient-test
+spec:
+  selector:
+    app: {{ .Values.httpbin.name }}
+  ports:
+  - port: {{ .Values.httpbin.port }}
+    targetPort: {{ .Values.httpbin.port }}
+{{- end }}
