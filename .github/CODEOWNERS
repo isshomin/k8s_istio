@@ -1,0 +1,6 @@
+# Global
+* @isshomin
+
+# Prod values require stricter review
+/apps/ambient-test/prod/* @isshomin
+/charts/ambient-test/* @isshomin
