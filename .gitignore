@@ -1,0 +1,9 @@
+*.pem
+*.key
+*.crt
+*.kubeconfig
+kubeconfig
+.env
+.env.*
+*secret*
+secrets/
