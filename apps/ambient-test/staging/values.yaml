@@ -1,9 +1,0 @@
-namespace: default
-httpbin:
-  name: httpbin-staging
-  serviceAccount: httpbin-staging
-  replicas: 1
-sleep:
-  name: sleep-staging
-  serviceAccount: sleep-staging
-  replicas: 1

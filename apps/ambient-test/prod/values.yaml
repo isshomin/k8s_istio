@@ -1,9 +1,0 @@
-namespace: default
-httpbin:
-  name: httpbin-prod
-  serviceAccount: httpbin-prod
-  replicas: 2
-sleep:
-  name: sleep-prod
-  serviceAccount: sleep-prod
-  replicas: 2
