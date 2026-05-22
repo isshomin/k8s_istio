@@ -1,0 +1,9 @@
+namespace: default
+httpbin:
+  name: httpbin-dev
+  serviceAccount: httpbin-dev
+  replicas: 1
+sleep:
+  name: sleep-dev
+  serviceAccount: sleep-dev
+  replicas: 1
