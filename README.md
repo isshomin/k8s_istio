@@ -27,11 +27,11 @@
 
 **Worker1** / IP: `10.0.2.42` </br>
 - Cilium agent
-- ztunnel/앱 워크로드 실행
+- ztunnel / waypoint / 앱 워크로드 실행
 
 **Worker2** / IP: `10.0.2.43` </br>
 - Cilium agent
-- ztunnel/waypoint/앱 워크로드 실행
+- ztunnel / waypoint / 앱 워크로드 실행
 
 </br>
 
@@ -57,7 +57,7 @@
 
 ## 🏗️ Architecture
 
-![image](여기에-아키텍처-이미지-추가)
+<img width="1670" height="941" alt="Image" src="https://github.com/user-attachments/assets/b65a549f-673f-4821-9739-d701a41fe522" />
 
 - North-South 트래픽: External → Istio Ingress Gateway
 - East-West L4: ztunnel (HBONE)
